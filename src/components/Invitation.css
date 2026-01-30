@@ -1,7 +1,7 @@
 .invitation {
   width: min(720px, 100%);
   margin: 0 auto;
-  padding: clamp(1.5rem, 4vw, 3rem);
+  padding: 1.25rem;
 }
 
 .paper {
@@ -37,7 +37,7 @@
 .title {
   font-family: var(--font-display);
   font-size: clamp(2.2rem, 6vw, 4.1rem);
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: 0.04em;
   color: var(--color-ink);
   margin: 0;

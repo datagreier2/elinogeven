@@ -2,7 +2,7 @@
   min-height: 100vh;
   display: grid;
   place-items: center;
-  padding: clamp(1.5rem, 4vw, 3.5rem);
+  padding: 0;
   position: relative;
   overflow: hidden;
 }
