@@ -21,3 +21,9 @@
   position: relative;
   z-index: 1;
 }
+
+@media (max-width: 520px) {
+  .app {
+    padding-top: 80px;
+  }
+}
