@@ -16,16 +16,24 @@ const Invitation = () => {
 
     let frameId = null
 
+    let imageTop = 0
+    let stickyHeight = 0
+
+    const measure = () => {
+      imageTop = imageEl.getBoundingClientRect().top + window.scrollY
+      stickyHeight = stickyEl.getBoundingClientRect().height
+    }
+
     const updateFade = () => {
-      const stickyRect = stickyEl.getBoundingClientRect()
-      const imageRect = imageEl.getBoundingClientRect()
-      const overlap = stickyRect.bottom - imageRect.top
-      const clamped = Math.min(Math.max(overlap, 0), 140)
-      const opacity = 1 - clamped / 180
+      const scrollY = window.scrollY
+      const progress = scrollY - (imageTop - stickyHeight)
+      const clamped = Math.min(Math.max(progress, 0), 80)
+      const opacity = 1 - clamped / 100
 
       imageEl.style.setProperty('--fade', `${clamped}px`)
       imageEl.style.setProperty('--fade-opacity', opacity.toFixed(2))
-      const collapsed = imageRect.bottom <= stickyRect.bottom + 8
+      const imageBottom = imageTop + imageEl.getBoundingClientRect().height
+      const collapsed = scrollY + stickyHeight >= imageBottom - 260
       heroEl.dataset.sticky = collapsed ? 'off' : 'on'
       heroEl.dataset.collapsed = collapsed ? 'on' : 'off'
       frameId = null
@@ -37,9 +45,11 @@ const Invitation = () => {
     }
 
     const onResize = () => {
+      measure()
       onScroll()
     }
 
+    measure()
     updateFade()
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', onResize)
