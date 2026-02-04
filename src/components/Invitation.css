@@ -119,7 +119,7 @@
 
 .hero[data-collapsed='on'] .hero-image {
   max-height: 0;
-  margin: 0;
+  margin: 0.3rem auto 0.6rem;
   opacity: 0;
 }
 

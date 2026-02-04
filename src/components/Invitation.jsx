@@ -4,26 +4,28 @@ import './Invitation.css'
 const Invitation = () => {
   const heroImageRef = useRef(null)
   const heroRef = useRef(null)
+  const heroStickyRef = useRef(null)
   useEffect(() => {
     const imageEl = heroImageRef.current
     const heroEl = heroRef.current
+    const stickyEl = heroStickyRef.current
 
-    if (!imageEl || !heroEl) {
+    if (!imageEl || !heroEl || !stickyEl) {
       return undefined
     }
 
     let frameId = null
-    let baseTop = imageEl.getBoundingClientRect().top
 
     const updateFade = () => {
+      const stickyRect = stickyEl.getBoundingClientRect()
       const imageRect = imageEl.getBoundingClientRect()
-      const delta = baseTop - imageRect.top
-      const clamped = Math.min(Math.max(delta, 0), 120)
-      const opacity = 1 - clamped / 160
+      const overlap = stickyRect.bottom - imageRect.top
+      const clamped = Math.min(Math.max(overlap, 0), 140)
+      const opacity = 1 - clamped / 180
 
       imageEl.style.setProperty('--fade', `${clamped}px`)
       imageEl.style.setProperty('--fade-opacity', opacity.toFixed(2))
-      const collapsed = clamped >= 120
+      const collapsed = imageRect.bottom <= stickyRect.bottom + 8
       heroEl.dataset.sticky = collapsed ? 'off' : 'on'
       heroEl.dataset.collapsed = collapsed ? 'on' : 'off'
       frameId = null
@@ -35,7 +37,6 @@ const Invitation = () => {
     }
 
     const onResize = () => {
-      baseTop = imageEl.getBoundingClientRect().top
       onScroll()
     }
 
@@ -56,7 +57,7 @@ const Invitation = () => {
     <main className="invitation">
       <div className="paper">
         <header className="hero" ref={heroRef}>
-          <div className="hero-sticky" data-animate="hero">
+          <div className="hero-sticky" data-animate="hero" ref={heroStickyRef}>
             <div className="date-display">11/4</div>
             <h1 className="title">Elin & Even</h1>
             <div className="hero-divider" aria-hidden="true" />
