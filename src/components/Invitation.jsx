@@ -34,6 +34,10 @@ const Invitation = () => {
               men utover kvelden blir det noe enkelt å bite i, og selvfølgelig fest
               og dans.
             </p>
+            <p className="ceremony">
+              Vielsen vil finne sted på Oslo rådhus kl. 15.15, sammen med våre
+              forlovere og nærmeste familie.
+            </p>
           </section>
 
           <section id="svar" className="section-card" data-animate="section">
@@ -88,10 +92,6 @@ const Invitation = () => {
                 </a>
               </li>
             </ul>
-            <p className="ceremony">
-              Vielsen vil finne sted på Oslo rådhus kl. 15.15, sammen med våre
-              forlovere og nærmeste familie.
-            </p>
           </section>
 
           <section id="toastmaster" className="section-card" data-animate="section">
