@@ -1,12 +1,69 @@
+import { useEffect, useRef } from 'react'
 import './Invitation.css'
 
 const Invitation = () => {
+  const heroImageRef = useRef(null)
+  const heroRef = useRef(null)
+  useEffect(() => {
+    const imageEl = heroImageRef.current
+    const heroEl = heroRef.current
+
+    if (!imageEl || !heroEl) {
+      return undefined
+    }
+
+    let frameId = null
+    let baseTop = imageEl.getBoundingClientRect().top
+
+    const updateFade = () => {
+      const imageRect = imageEl.getBoundingClientRect()
+      const delta = baseTop - imageRect.top
+      const clamped = Math.min(Math.max(delta, 0), 120)
+      const opacity = 1 - clamped / 160
+
+      imageEl.style.setProperty('--fade', `${clamped}px`)
+      imageEl.style.setProperty('--fade-opacity', opacity.toFixed(2))
+      const collapsed = clamped >= 120
+      heroEl.dataset.sticky = collapsed ? 'off' : 'on'
+      heroEl.dataset.collapsed = collapsed ? 'on' : 'off'
+      frameId = null
+    }
+
+    const onScroll = () => {
+      if (frameId) return
+      frameId = requestAnimationFrame(updateFade)
+    }
+
+    const onResize = () => {
+      baseTop = imageEl.getBoundingClientRect().top
+      onScroll()
+    }
+
+    updateFade()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onResize)
+
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onResize)
+      if (frameId) {
+        cancelAnimationFrame(frameId)
+      }
+    }
+  }, [])
+
   return (
     <main className="invitation">
       <div className="paper">
-        <header className="hero" data-animate="hero">
-          <div className="date-display">11/4</div>
-          <h1 className="title">Elin og Even</h1>
+        <header className="hero" ref={heroRef}>
+          <div className="hero-sticky" data-animate="hero">
+            <div className="date-display">11/4</div>
+            <h1 className="title">Elin & Even</h1>
+            <div className="hero-divider" aria-hidden="true" />
+          </div>
+          <div className="hero-image" ref={heroImageRef} data-animate="hero-image">
+            <img src="/elinogeven.png" alt="Elin og Even" />
+          </div>
           <div className="event-block">
             <p className="headline">BLI MED PÅ VÅR BRYLLUPSFEST!</p>
             <p className="venue">Pigalle Klubb, Oslo</p>

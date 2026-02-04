@@ -17,6 +17,10 @@
   --font-body: 'Work Sans', 'Gill Sans', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 *,
 *::before,
 *::after {
