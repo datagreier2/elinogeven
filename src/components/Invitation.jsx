@@ -34,6 +34,9 @@ const Invitation = () => {
               men utover kvelden blir det noe enkelt å bite i, og selvfølgelig fest
               og dans.
             </p>
+            <p className="gift">
+              Gaven vi ønsker oss er at dere kommer og feirer dagen sammen med oss!
+            </p>
             <p className="ceremony">
               Vielsen vil finne sted på Oslo rådhus kl. 15.15, sammen med våre
               forlovere og nærmeste familie.
@@ -42,9 +45,6 @@ const Invitation = () => {
 
           <section id="svar" className="section-card" data-animate="section">
             <h2>Svar vennligst</h2>
-            <p className="gift">
-              Gaven vi ønsker oss er at dere kommer og feirer dagen sammen med oss!
-            </p>
             <p className="rsvp">
               Bekreft deltagelse på melding til Elin eller Even innen 15. mars.
             </p>
