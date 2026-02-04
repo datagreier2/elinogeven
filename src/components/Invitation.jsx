@@ -5,6 +5,7 @@ const Invitation = () => {
   const heroImageRef = useRef(null)
   const heroRef = useRef(null)
   const heroStickyRef = useRef(null)
+  const collapsedOnceRef = useRef(false)
   useEffect(() => {
     const imageEl = heroImageRef.current
     const heroEl = heroRef.current
@@ -37,8 +38,13 @@ const Invitation = () => {
       const imageBottom = imageTop + imageHeight
       const collapsed =
         scrollY > 8 && imageHeight > 0 && scrollY + stickyHeight >= imageBottom - 260
-      heroEl.dataset.sticky = collapsed ? 'off' : 'on'
-      heroEl.dataset.collapsed = collapsed ? 'on' : 'off'
+      if (collapsed) {
+        collapsedOnceRef.current = true
+      }
+
+      const isCollapsed = collapsedOnceRef.current
+      heroEl.dataset.sticky = isCollapsed ? 'off' : 'on'
+      heroEl.dataset.collapsed = isCollapsed ? 'on' : 'off'
       frameId = null
     }
 
