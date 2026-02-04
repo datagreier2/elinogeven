@@ -18,10 +18,12 @@ const Invitation = () => {
 
     let imageTop = 0
     let stickyHeight = 0
+    let imageHeight = 0
 
     const measure = () => {
       imageTop = imageEl.getBoundingClientRect().top + window.scrollY
       stickyHeight = stickyEl.getBoundingClientRect().height
+      imageHeight = imageEl.getBoundingClientRect().height
     }
 
     const updateFade = () => {
@@ -32,8 +34,9 @@ const Invitation = () => {
 
       imageEl.style.setProperty('--fade', `${clamped}px`)
       imageEl.style.setProperty('--fade-opacity', opacity.toFixed(2))
-      const imageBottom = imageTop + imageEl.getBoundingClientRect().height
-      const collapsed = scrollY + stickyHeight >= imageBottom - 260
+      const imageBottom = imageTop + imageHeight
+      const collapsed =
+        scrollY > 8 && imageHeight > 0 && scrollY + stickyHeight >= imageBottom - 260
       heroEl.dataset.sticky = collapsed ? 'off' : 'on'
       heroEl.dataset.collapsed = collapsed ? 'on' : 'off'
       frameId = null
@@ -49,14 +52,28 @@ const Invitation = () => {
       onScroll()
     }
 
-    measure()
-    updateFade()
+    const prime = () => {
+      measure()
+      updateFade()
+    }
+
+    const imgEl = imageEl.querySelector('img')
+    if (imgEl && !imgEl.complete) {
+      imgEl.addEventListener('load', prime, { once: true })
+    }
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(prime)
+    })
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', onResize)
 
     return () => {
       window.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', onResize)
+      if (imgEl) {
+        imgEl.removeEventListener('load', prime)
+      }
       if (frameId) {
         cancelAnimationFrame(frameId)
       }
