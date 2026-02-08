@@ -87,13 +87,31 @@ const Invitation = () => {
           </header>
 
           <nav className="quick-nav" aria-label="Hopp til seksjon">
-            <a href="#svar">Svar vennligst</a>
+            <a href="#svar">Svar ønskes</a>
             <a href="#sted">Adkomst</a>
             <a href="#toastmaster">Toastmaster</a>
             <a href="#kleskode">Kleskode</a>
           </nav>
 
           <div className="sections">
+            <details className="section-card gift-card">
+              <summary>
+                <h2>Gaver</h2>
+                <span className="gift-hint" aria-hidden="true">
+                  <svg viewBox="0 0 60 30" role="presentation" aria-hidden="true">
+                    <path d="M6 8l24 16L54 8" />
+                  </svg>
+                </span>
+              </summary>
+              <div className="gift-body">
+                <p>
+                  Det har kommet noen spørsmål om gaveliste, og dersom noen ønsker å
+                  gi oss en liten gave blir vi selvfølgelig glade for alt. For
+                  eksempel et bidrag til bryllupsreise, et gavekort, en
+                  middagsinvitasjon eller noe dere tenker vi trenger.
+                </p>
+              </div>
+            </details>
             <section className="section-card intro">
               <h2>Velkommen</h2>
               <p>
@@ -116,7 +134,7 @@ const Invitation = () => {
             </section>
 
             <section id="svar" className="section-card">
-              <h2>Svar vennligst</h2>
+              <h2>Svar ønskes</h2>
               <p className="rsvp">
                 Bekreft deltagelse på melding til Elin eller Even innen 15. mars.
               </p>
