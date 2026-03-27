@@ -161,7 +161,7 @@ const Invitation = () => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Fra Nybrua bussholdeplass
+                    Fra Nybrua trikkeholdeplass
                   </a>
                 </li>
                 <li>
