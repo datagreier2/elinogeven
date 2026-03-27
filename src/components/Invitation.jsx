@@ -24,7 +24,7 @@ const EventBlock = () => {
   return (
     <div className="event-block">
       <p className="headline">BLI MED PÅ VÅR BRYLLUPSFEST!</p>
-      <p className="venue">Pigalle Klubb, Oslo</p>
+      <p className="venue">Mangelsgården, Oslo</p>
       <p className="time">Klokken 18.30</p>
     </div>
   )
@@ -120,12 +120,13 @@ const Invitation = () => {
               </p>
               <p>
                 Derfor har vi gleden av å samle alle vi er glade i til å feire dette
-                sammen med oss i Oslo, byen der vi møttes. Det serveres ikke middag,
-                men utover kvelden blir det noe enkelt å bite i, og selvfølgelig fest
-                og dans.
+                sammen med oss i Oslo, byen der vi møttes.
               </p>
-              <p className="gift">
-                Gaven vi ønsker oss er at dere kommer og feirer dagen sammen med oss!
+              <p>
+                Kvelden starter med velkomstdrink og mingling klokken 18.30. Utover
+                kvelden blir det feiring med musikk, god drikke og snacks, og det
+                serveres nattmat – pølsebuffet fra Syverkiosken. Festen varer til
+                klokken 03.00.
               </p>
               <p className="ceremony">
                 Vielsen vil finne sted på Oslo rådhus kl. 15.15, sammen med våre
@@ -142,12 +143,12 @@ const Invitation = () => {
             </section>
 
             <section id="sted" className="section-card">
-              <h2>Pigalle</h2>
-              <p>Festen vil finne sted på Pigalle i Oslo.</p>
-              <ul className="directions" aria-label="Veibeskrivelser til Pigalle">
+              <h2>Mangelsgården</h2>
+              <p>Festen vil finne sted på Mangelsgården i Oslo.</p>
+              <ul className="directions" aria-label="Veibeskrivelser til Mangelsgården">
                 <li>
                   <a
-                    href="https://maps.app.goo.gl/RXEv9XxYduyoQGoEA"
+                    href="https://maps.app.goo.gl/zjMTNzHLaNWMVyzS6"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -156,29 +157,38 @@ const Invitation = () => {
                 </li>
                 <li>
                   <a
-                    href="https://maps.app.goo.gl/mcVQmqCnVF1BUymQ7"
+                    href="https://maps.app.goo.gl/TynyA7wr4754xY3c9"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Fra Grønland T
+                    Fra Nybrua bussholdeplass
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://maps.app.goo.gl/euXgMbVPcnQqWapj7"
+                    href="https://maps.app.goo.gl/dXsT8brgwEM19KBh9"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Fra 37-bussen
+                    Fra Hammerborggata bussholdeplass
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://maps.app.goo.gl/b6yvfFBYxrg2fJxV8"
+                    href="https://maps.app.goo.gl/rDwuruC1jGdJh34a8"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Fra P-hus
+                    Fra Spektrum P-hus
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://maps.app.goo.gl/erBzSZzLShNE2Vhh6"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Fra Stenersgata (flere P-hus)
                   </a>
                 </li>
               </ul>
